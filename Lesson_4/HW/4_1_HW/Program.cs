@@ -1,28 +1,14 @@
 ﻿// Напишите программу, которая принимает на
 // вход число и выдаёт сумму цифр в числе.
 
-int SumNum(int num)
-{
-    int length = 1;
-    int temporary = num;
-    while (temporary > 0)
-    {
-        temporary = temporary / 10;
-        length = length * 10;
-    }
-    length = length / 10;
+int SumNum(int num){
     int sum = 0;
-
-    while (length > 1)
-    {
-        sum = sum + (num/length);
-        num = num - ()
-        length--;
-
+    for (int i = 0; num > 0; i++){
+        sum = sum + num%10;
+        num = num/10;
     }
-    return length;
+    return sum;
 }
 
-int A = int.Parse(Console.ReadLine()!);
-int result = SumNum(A);
+int result = SumNum(int.Parse(Console.ReadLine()!));
 Console.WriteLine(result);
