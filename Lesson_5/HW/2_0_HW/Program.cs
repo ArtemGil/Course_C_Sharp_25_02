@@ -1,4 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// Задайте одномерный массив, заполненный случайными числами. 
+// Найдите сумму элементов, стоящих на нечётных позициях.
 
 
 void Print(int[] arr)
@@ -19,14 +20,13 @@ int[] MassNums(int size, int from, int to)
     return arr;
 }
 
-int SumChet(int[] arr)
+int SumNoChet(int[] arr)
 {
     int sum = 0;
 
-    for (int i = 0; i < arr.Length; i++)
+    for (int i = 0; i < arr.Length; i += 2)
     {
-        if (arr[i] % 2 == 0)
-            sum++;
+        sum = sum + arr[i];
     }
     return sum;
 }
@@ -37,4 +37,5 @@ int stop = int.Parse(Console.ReadLine()!);
 int[] mass = MassNums(num, start, stop);
 
 Print(mass);
-Console.WriteLine($"Кол-во четных чисел: {SumChet(mass)}");
+Console.WriteLine($"Сумма не четных чисел: {SumNoChet(mass)}");
+
