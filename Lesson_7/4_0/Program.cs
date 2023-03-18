@@ -1,5 +1,5 @@
-﻿// 2. Задайте двумерный массив. Найдите элементы,
-//    у которых обе позиции чётные, и замените эти элементы на их квадраты.
+﻿// 3. Задайте двумерный массив. Найдите сумму элементов главной диагонали.
+
 
 void Print(int[,] arr)
 {
@@ -26,13 +26,15 @@ int[,] MassNums(int row, int column, int from, int to)
     return arr;
 }
 
-void ChangeMass(int[,] array)
+int SumMass(int[,] array)
 {
-    for (int i = 1; i < array.GetLength(0); i = i + 2)
-        for (int j = 1; j < array.GetLength(1); j = j + 2)
+    int sumarray = 0;
+    for (int i = 0; i < array.GetLength(0); i++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            array[i, j] = array[i, j] * array[i, j];
+            if (i == j) sumarray = sumarray + array[i,j];
         }
+    return sumarray;
 }
 
 int num_row = int.Parse(Console.ReadLine()!);
@@ -42,5 +44,5 @@ int stop = int.Parse(Console.ReadLine()!);
 
 int[,] mass = MassNums(num_row, num_column, start, stop);
 Print(mass);
-ChangeMass(mass);
-Print(mass);
+int sum = SumMass(mass);
+Console.WriteLine($"Summa: {sum}");
