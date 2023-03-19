@@ -1,5 +1,5 @@
-﻿// 1. Задайте двумерный массив. Напишите программу,
-//    которая поменяет местами первую и последнюю строку массива.
+﻿// Задайте двумерный массив. Напишите программу, которая
+// упорядочит по убыванию элементы каждой строки двумерного массива.
 
 void Print(int[,] arr)
 {
@@ -25,13 +25,16 @@ int[,] MassNums(int row, int column, int from, int to)
     return arr;
 }
 
-void FirstWithLast(int[,] arr)
+void NewLine(int[,] arr)
 {
     int row = arr.GetLength(0);
     int column = arr.GetLength(1);
 
-    for (int j = 0; j < column; j++)
-        (arr[0, j], arr[row - 1, j]) = (arr[row - 1, j], arr[0, j]);
+    for (int i = 0; i < row; i++)
+        for (int j = 0; j < column; j++)
+            for (int k = j + 1; k < column; k++)
+                if (arr[i, j] < arr[i, k])
+                    (arr[i, j], arr[i, k]) = (arr[i, k], arr[i, j]);
 }
 
 Console.Write("Enter the number of rows: ");
@@ -44,5 +47,5 @@ int stop = int.Parse(Console.ReadLine()!);
 
 int[,] mass = MassNums(row_num, column_num, start, stop);
 Print(mass);
-FirstWithLast(mass);
+NewLine(mass);
 Print(mass);
