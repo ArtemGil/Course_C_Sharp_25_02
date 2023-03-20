@@ -1,5 +1,5 @@
-﻿// Задайте прямоугольный двумерный массив. Напишите программу,
-// которая будет находить строку с наименьшей суммой элементов.
+﻿// Задайте две матрицы. Напишите программу, которая будет
+// находить произведение двух матриц.
 
 void Print(int[,] arr)
 {
@@ -25,23 +25,16 @@ int[,] MassNums(int row, int column, int from, int to)
     return arr;
 }
 
-void MinLine(int[,] arr)
+int[,] DoubleMass(int[,] arr, int[,] arr2)
 {
     int row = arr.GetLength(0);
     int column = arr.GetLength(1);
-    int min = 0;
-    int RowMin = 0;
+    int[,] arr3 = new int[row, column];
 
-    for (int j = 0; j < column; j++)
-        for (int i = 0; i < row; i++)
-        {
-            min = min + arr[i, j];
-            RowMin = i;
-        }
-
-    Console.Write("Строка минимум: ");
-    for (int j = 0; j < column; j++)
-        Console.Write($" {arr[RowMin, j]} ");
+    for (int i = 0; i < row; i++)
+        for (int j = 0; j < column; j++)
+            arr3[i, j] = arr[i, j] * arr2[i, j];
+    return arr3;
 }
 
 Console.Write("Enter the number of rows: ");
@@ -53,5 +46,9 @@ int start = int.Parse(Console.ReadLine()!);
 int stop = int.Parse(Console.ReadLine()!);
 
 int[,] mass = MassNums(row_num, column_num, start, stop);
+int[,] mass2 = MassNums(row_num, column_num, start, stop);
 Print(mass);
-MinLine(mass);
+Print(mass2);
+
+int[,] mass3 = DoubleMass(mass, mass2);
+Print(mass3);
